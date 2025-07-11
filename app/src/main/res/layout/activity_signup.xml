@@ -17,7 +17,7 @@
             android:gravity="center"
             android:layout_marginTop="@dimen/_80sdp"
             android:layout_marginBottom="@dimen/_20sdp"
-            android:text="Login Here"
+            android:text="SignUp Here"
             android:textColor="@color/blue"
 
             />
@@ -25,23 +25,42 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/_30sdp"
+            android:textSize="@dimen/_18sdp"
             android:gravity="center"
-            android:text="Welcome back you've \nbeen missed"
+            android:text="Create an Account so you can explore all existing jobs"
             android:layout_gravity="center"
             />
 
+
+
         <EditText
-            android:id="@+id/main_email"
+            android:id="@+id/signup_name"
             style="@style/edit_18"
             android:layout_marginTop="@dimen/_30sdp"
+            android:hint="Name"
+            />
+
+
+        <EditText
+            android:id="@+id/signup_email"
+            style="@style/edit_18"
+            android:layout_marginTop="@dimen/_10sdp"
             android:inputType="textEmailAddress"
             android:hint="Email"
             />
 
+        <EditText
+            android:id="@+id/signup_contact"
+            style="@style/edit_18"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:hint="Contact"
+            />
+
 
         <EditText
-            android:id="@+id/main_password"
+            android:id="@+id/signup_password"
             style="@style/edit_18"
             android:layout_marginTop="@dimen/_10sdp"
             android:hint="Password"
@@ -49,26 +68,26 @@
 
             />
 
-        <TextView
-            style="@style/text_18"
-            android:text="Forget your Password?"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:gravity="end"
-            android:textColor="@color/blue"
+        <EditText
+            android:id="@+id/signup_cnfpassword"
+            style="@style/edit_18"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
             />
 
         <TextView
-            android:id="@+id/create_account"
+            android:id="@+id/already_account"
             style="@style/text_18"
-            android:text="Create New Account"
+            android:text="Already Have an Account"
             android:layout_marginTop="@dimen/_50sdp"
             android:gravity="center"
             />
 
         <Button
-            android:id="@+id/main_login"
+            android:id="@+id/signup_button"
             style="@style/button_20"
-            android:text="Sign In"
+            android:text="Sign Up"
             app:backgroundTint="@null"
             android:layout_marginBottom="@dimen/_30sdp"
             />

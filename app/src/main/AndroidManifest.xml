@@ -13,14 +13,24 @@
         android:theme="@style/Theme.PresidentInternship"
         tools:targetApi="31">
         <activity
+            android:name=".SignupActivity"
+            android:exported="true" >
+
+
+
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

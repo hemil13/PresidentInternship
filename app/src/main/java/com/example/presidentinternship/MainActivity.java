@@ -1,9 +1,11 @@
 package com.example.presidentinternship;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -19,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     Button login;
     EditText email, password;
 
+    TextView create_account;
+
     String email_pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
 
 
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         email = findViewById(R.id.main_email);
         password = findViewById(R.id.main_password);
         login = findViewById(R.id.main_login);
+        create_account = findViewById(R.id.create_account);
 
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +55,16 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
                     Snackbar.make(view, "Login Successfull", Snackbar.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        create_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, SignupActivity.class);
+//                startActivity(intent);
+
+                onBackPressed();
             }
         });
 
