@@ -1,5 +1,6 @@
 package com.example.presidentinternship;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,10 +24,16 @@ public class SignupActivity extends AppCompatActivity {
 
     String email_pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
 
+    SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        db = openOrCreateDatabase("PresidentInternship.db", MODE_PRIVATE, null);
+        String userTable = "CREATE TABLE IF NOT EXISTS user (userid INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(50), email VARCHAR(50), contact VARCHAR(15), password VARCHAR(20))";
+        db.execSQL(userTable);
 
         name = findViewById(R.id.signup_name);
         email = findViewById(R.id.signup_email);
@@ -44,7 +51,6 @@ public class SignupActivity extends AppCompatActivity {
                     email.setError("Enter Email");
                 } else if (!email.getText().toString().matches(email_pattern)) {
                     email.setError("Enter a Valid Email");
-
                 }
 
                 else if(name.getText().toString().trim().equals("")){
@@ -53,7 +59,6 @@ public class SignupActivity extends AppCompatActivity {
 
                 else if (contact.getText().toString().trim().equals("")) {
                     contact.setError("Enter Contact");
-
                 } else if (contact.getText().toString().length()<10) {
                     contact.setError("Enter A Valid Contact");
 
@@ -61,7 +66,6 @@ public class SignupActivity extends AppCompatActivity {
                     password.setError("Enter Password");
                 } else if (password.getText().toString().length()<6) {
                     password.setError("Minimum 6 Characters");
-
                 }
 
 
@@ -69,14 +73,16 @@ public class SignupActivity extends AppCompatActivity {
                     cnfpassword.setError("Enter Confirm Password");
                 } else if (!cnfpassword.getText().toString().matches(password.getText().toString().trim())) {
                     cnfpassword.setError("Confirm Password Doesn't Match");
-
                 }
 
 
 
                 else{
-                    onBackPressed();
+                    String insertUser = "INSERT INTO user VALUES(NULL, '"+name.getText().toString()+"', '"+email.getText().toString()+"', '"+contact.getText().toString()+"', '"+password.getText().toString()+"' )";
+                    db.execSQL(insertUser);
+
                     Toast.makeText(SignupActivity.this, "Signup Successfull", Toast.LENGTH_SHORT).show();
+                    onBackPressed();
 //                    Snackbar.make(view, "Login Successfull", Snackbar.LENGTH_LONG).show();
                 }
             }
