@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     Button login;
     EditText email, password;
 
-    TextView create_account;
+    TextView create_account, forget_password;
 
     String email_pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
 
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.main_password);
         login = findViewById(R.id.main_login);
         create_account = findViewById(R.id.create_account);
+        forget_password = findViewById(R.id.forget_password);
 
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     if(cursor.getCount()>0){
                         while (cursor.moveToNext()){
                             sp.edit().putString(ConstantSp.userid, cursor.getString(0)).commit();
+                            sp.edit().putString(ConstantSp.name, cursor.getString(1)).commit();
                         }
                         Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
 
@@ -93,6 +95,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
 
 //                onBackPressed();
+            }
+        });
+
+        forget_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ForgetPasswordActivity.class);
+                startActivity(intent);
             }
         });
 
