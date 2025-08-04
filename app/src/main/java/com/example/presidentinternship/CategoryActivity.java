@@ -1,6 +1,7 @@
 package com.example.presidentinternship;
 
 import android.os.Bundle;
+import android.widget.Adapter;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 public class CategoryActivity extends AppCompatActivity {
 
@@ -26,7 +28,14 @@ public class CategoryActivity extends AppCompatActivity {
 
         category_recycler = findViewById(R.id.category_recycler);
 
-        category_recycler.setLayoutManager(new LinearLayoutManager(CategoryActivity.this));
+//        category_recycler.setLayoutManager(new LinearLayoutManager(CategoryActivity.this));
+        category_recycler.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+//        category_recycler.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL));
+
+
+
+        CategoryAdapter adapter = new CategoryAdapter(CategoryActivity.this, categoryIdArray, nameArray, imageArray);
+        category_recycler.setAdapter(adapter);
 
 
     }
